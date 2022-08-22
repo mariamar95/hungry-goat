@@ -1,0 +1,25 @@
+@import url(https://fonts.googleapis.com/css2?family=Courgette&display=swap); 
+
+body {
+    display: flex;
+    min-height: 100vh;
+    flex-direction: column;
+}
+
+main {
+    flex: 1 0 auto;
+}
+
+/* NavBar */
+nav {
+    background-color: #344e41; 
+}
+
+.brand-logo {
+    font-family: 'Courgette', sans-serif; 
+}
+
+/* Footer */
+.page-footer {
+    background-color: #344e41;
+}

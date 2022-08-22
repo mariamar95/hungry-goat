@@ -1,17 +1,57 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.2/css/all.min.css" integrity="sha512-1sCRPdkRXhBV2PBLUdRb4tMg1w2YPf37qatUFeS7zlBy7jJI8Lf4VHwWfZZfpXtYSLy85pkm9GaYVYMfw5BC1A==" crossorigin="anonymous" referrerpolicy="no-referrer" />
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
     <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}" type="text/css">
     <title>Hungry Goat</title>
 </head>
+
 <body>
-    Hello World
+    <!--NavBar-->
+    <header>
+        <nav>
+            <div class="nav-wrapper">
+                <a href="{{ url_for('home') }}" class="brand-logo">Hungry Goat</a>
+                <a href="#" data-target="mobile-demo" class="sidenav-trigger"><i class="fa-solid fa-bars"></i>
+                <ul class="right hide-on-med-and-down">
+                    <li><a href="{{ url_for('home') }}">Home</a></li>
+                    <li><a href="">Login</a></li>
+                    <li><a href="">Register</a></li>
+                    <li><a href="">Contact</a></li>
+                </ul>
+            </div>
+        </nav>
+        <!--Mobile Sidenav-->
+        <ul class="sidenav" id="mobile-demo">
+            <li><a href="{{ url_for('home') }}">Home</a></li>
+            <li><a href="">Login</a></li>
+            <li><a href="">Register</a></li>
+            <li><a href="">Contact</a></li>
+        </ul>
+    </header>
+
+    <main class="container">
+        {% block content %}
+        {% endblock %}
+    </main>
+
+    <!--Footer-->
+    <footer class="page-footer">
+        <div class="footer-copyright">
+          <div class="container">
+            Created by <a href="https://github.com/mariamar95" target="_blank" class="grey-text"> Maria Markou-Inglis</a>
+          <a class="grey-text text-lighten-4 right" href="#!">More Links</a>
+          </div>
+        </div>
+      </footer>
 
     <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
-    <script scr="{{ url_for('static', filename='script.js') }}"></script>
+    <script src="{{ url_for('static', filename='js/script.js') }}"></script>
 </body>
+
 </html>
