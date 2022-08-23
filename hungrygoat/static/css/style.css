@@ -1,13 +1,23 @@
-@import url(https://fonts.googleapis.com/css2?family=Caveat+Brush&display=swap); 
+@import url(https://fonts.googleapis.com/css2?family=Arimo&family=Caveat+Brush&display=swap);
 
 body {
     display: flex;
     min-height: 100vh;
     flex-direction: column;
+    background-color: #dad7cd;
 }
 
 main {
     flex: 1 0 auto;
+}
+
+p {
+    font-family: 'Arimo', sans-serif;
+}
+
+.title{
+   font-family: 'Caveat Brush', sans-serif; 
+   color: #344e41;
 }
 
 /* NavBar */
@@ -19,11 +29,7 @@ nav {
     font-family: 'Caveat Brush', sans-serif; 
 }
 
-/* Footer */
-.page-footer {
-    background-color: #344e41;
-}
-
+/* Hero Img */
 .hero {
     height: 75vh;
  
@@ -47,7 +53,7 @@ nav {
 
  .hero-h1-text {
     font-family: "Caveat Brush", sans-serif;
-    font-size: 50px;
+    font-size: 70px;
     margin-bottom: 10px;
     text-align: center;
     letter-spacing: 2px;
@@ -59,4 +65,9 @@ nav {
     .hero-h1-text{
     font-size: 38px;
  }}
+
+/* Footer */
+.page-footer {
+    background-color: #344e41;
+}
 
