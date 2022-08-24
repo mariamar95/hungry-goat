@@ -25,3 +25,9 @@ def register():
 @app.route("/login", methods=["GET", "POST"])
 def login():
     return render_template("login.html")
+
+
+@app.route("/contact", methods=["GET", "POST"])
+def contact():
+    return render_template("contact.html")
+

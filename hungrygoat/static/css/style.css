@@ -37,6 +37,13 @@ form i, a i{
     background-color: #a3b18a;
 }
 
+/* code from css-tricks */
+hr {
+    border: 0;
+    height: 2px;
+    background-image: linear-gradient(to right, rgba(52, 78,  65, 0), rgba(52, 78,  65, 0.75), rgba(52, 78,  65, 0));
+}
+
 /* NavBar */
 .brand-logo {
     font-family: 'Caveat Brush', sans-serif;

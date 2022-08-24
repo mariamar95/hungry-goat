@@ -2,6 +2,7 @@ $(document).ready(function(){
   //Materialize Initialization
   $('.sidenav').sidenav();
   $('select').formSelect();
+  $('textarea#message').characterCounter();
 });
 
 // Code modified from Wanderlust Recipes, find more on README
