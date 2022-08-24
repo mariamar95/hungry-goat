@@ -1,0 +1,42 @@
+{% extends "base.html" %}
+{% block content %}
+
+<div class="container">
+    <h2 class="title center-align">Login</h2>
+    <!-- Login form -->
+    <div class="row">
+        <form class="col s12 l8 offset-l2" action="" method="POST">
+            <div class="card-panel">
+                <div class="row">
+                    <div class="input-field col s12">
+                        <input id="username" name="username" type="text" minlength="5" maxlength="15"
+                            title="Username between 5 and 15 characters" pattern="^\S+$" class="validate" required>
+                        <label for="username"><i class="fa-solid fa-user"></i> Username</label>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="input-field col s12">
+                        <input id="password" name="password" type="password" minlength="5" maxlength="15"
+                            title="Password between 5 and 15 characters" pattern="^\S+$" class="validate" required>
+                        <label for="password"><i class="fa-solid fa-key"></i> Password</label>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="center-align">
+                        <button type="submit" class="btn-large green-bg">Login</button>
+                    </div>
+                </div>
+            </div>
+        </form>
+    </div>
+    <div class="row">
+        <div class="col s12">
+            <p class="center-align dark-green-text">
+                Not registered yet? Create an account
+                <a class="grey-text" href="{{ url_for('register') }}">here</a>.
+            </p>
+        </div>
+    </div>
+</div>
+
+{% endblock %}
