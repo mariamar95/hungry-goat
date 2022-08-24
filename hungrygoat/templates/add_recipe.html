@@ -1,0 +1,104 @@
+{% extends "base.html" %}
+{% block content%}
+<h2 class="center-align title">Add Recipe</h2>
+
+<div class="container">
+
+    <!-- Recipe form -->
+    <div class="row">
+        <form class="col s12 l8 offset-l2" action="{{ url_for('add_recipe')}}" method="POST">
+            <div class="card-panel">
+                <div class="row">
+                    <div class="input-field col s12">
+                        <input id="recipe_title" name="recipe_title" type="text" class="validate"
+                            pattern="^(?!.*[\p{P} ]{3})[a-zA-Z0-9\p{P} ]{5,25}$" title="5-25 characters" required>
+                        <label for="recipe_title"><i class="fa-solid fa-bell-concierge"></i> Recipe Title</label>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="input-field col s8">
+                        <input id="image_url" name="image_url" type="text" class="validate">
+                        <label for="image_url"><i class="fa-solid fa-image"></i> Upload image url (optional)</label>
+                    </div>
+                    <div class="input-field col s4">
+
+                        <input id="servings" name="servings" type="number" min="1" max="20"
+                            title="Servings 1-20 using numeric values" class="validate" required>
+
+                        <label for="servings"><i class="fa-solid fa-utensils"></i> Servings</i></label>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="input-field col s6">
+                        <select id="category_name" name="category_name" class="validate" required>
+                            <option value="" selected>Select One</option>
+                            <option value=""></option>
+                        </select>
+                        <label for="category_name"><i class="fa-solid fa-folder-open"></i> Category</label>
+                    </div>
+                    <div class="input-field col s6">
+                        <input id="cook_time" name="cook_time" type="text" minlength="1" maxlength="5"
+                            title="Length of time in minutes up to 5 numbers long" class="validate" pattern="^[0-9]*$"
+                            required>
+                        <label for="cook_time"><i class="fa-solid fa-clock"></i> Cook Time (mins)</label>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="input-field col s12">
+                        <input id="recipe_description" name="recipe_description" type="text"
+                            title="Description between 10 and 100 characters"
+                            pattern="^(?!.*[\p{P} ]{3})[a-zA-Z0-9\p{P} ]{10,100}$" class="validate" required>
+                        <label for="recipe_description"><i class="fa-solid fa-align-justify"></i> Description</label>
+                        <p>Between 10 and 100 characters</p>
+                    </div>
+                </div>
+                <!-- Code modified from Wanderlust Recipes, find more on README -->
+                <div class="row">
+                    <div class="col s12">
+                        <h6 class="grey-text"><i class="fa-solid fa-bowl-food"></i> Ingredients</h6>
+                    </div>
+                    <div class="col s12">
+                        <ul id="ingredients" class="collection">
+                            <li class="collection-item">
+                                <a class="btn-floating btn-small waves-effect waves-light add-ingredient-list-item">
+                                    <i class="fas fa-plus"></i>
+                                    <span class="sr-only">Add Quantity and Ingredient</span>
+                                </a>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col s12">
+                        <h6 class="grey-text"><i class="fa-solid fa-circle-right"></i> Method</h6>
+                    </div>
+                    <div class="col s12">
+                        <ul id="method_step" class="collection validate">
+                            <li class="collection-item">
+                                <a class="btn-floating btn-small waves-effect waves-light add-method-step-item">
+                                    <i class="fas fa-plus"></i>
+                                    <span class="sr-only">Add Method Step</span>
+                                </a>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col s12 m6 center-align">
+                        <button type="submit" class="wave-effect btn-large green-bg">Submit</button>
+                    </div>
+                    <div class="col s12 m6 center-align">
+                        <a href="{{ url_for('recipes') }}" class="wave-effect btn-large red">Cancel</a>
+                    </div>
+
+                </div>
+            </div>
+
+
+
+        </form>
+
+    </div>
+</div>
+
+{% endblock %}

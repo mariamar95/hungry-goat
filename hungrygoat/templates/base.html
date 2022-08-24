@@ -16,12 +16,13 @@
 <body>
     <!--NavBar-->
     <header>
-        <nav>
+        <nav class="green-bg">
             <div class="nav-wrapper">
                 <a href="{{ url_for('home') }}" class="brand-logo">Hungry Goat</a>
                 <a href="#" data-target="mobile-demo" class="sidenav-trigger"><i class="fa-solid fa-bars"></i>
                     <ul class="right hide-on-med-and-down">
                         <li><a href="{{ url_for('home') }}">Home</a></li>
+                        <li><a href="{{ url_for('recipes') }}">Recipes</a></li>
                         <li><a href="">Login</a></li>
                         <li><a href="">Register</a></li>
                         <li><a href="">Contact</a></li>
@@ -31,6 +32,7 @@
         <!--Mobile Sidenav-->
         <ul class="sidenav" id="mobile-demo">
             <li><a href="{{ url_for('home') }}">Home</a></li>
+            <li><a href="{{ url_for('recipes') }}">Recipes</a></li>
             <li><a href="">Login</a></li>
             <li><a href="">Register</a></li>
             <li><a href="">Contact</a></li>
@@ -51,7 +53,7 @@
     </main>
 
     <!--Footer-->
-    <footer class="page-footer">
+    <footer class="page-footer green-bg">
         <div class="footer-copyright">
             <div class="container">
                 Created by <a href="https://github.com/mariamar95" target="_blank" class="grey-text"> Maria
@@ -60,7 +62,7 @@
             </div>
         </div>
     </footer>
-
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js" integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
     <script src="{{ url_for('static', filename='js/script.js') }}"></script>
 </body>

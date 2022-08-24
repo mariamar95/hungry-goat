@@ -121,6 +121,7 @@ Photo Here
 ### **Design and Development**
 - [Balsamiq](https://balsamiq.com/) was used to create wireframes
 - [Lucid](https://lucid.app/) was used to create database schema diagram
+- [Adobe Photoshop](https://www.adobe.com/uk/) was used to edit the hero image
 
 ### **Validating and Testing**
 
@@ -135,9 +136,11 @@ Testing section for this project can be found [here]()
 ***
 ## **Deployment**
 ***
-***
-## **Credits**
-***
 
-### **Media**
-- Hero Image - [Nandhu Kumar from Pexels](https://www.pexels.com/photo/selective-focus-photography-of-goat-1011630/)
+## **Credits**
+
+   # **Code**
+   - Code for submiting ingredients and method steps when adding a recipe from [Wanderlust Recipes](https://github.com/RussOakham/wanderlust-recipes)
+   
+   # **Images**
+   - Hero Image [Nandhu Kumar](https://www.pexels.com/@nandhukumar/) from [pexels.com](https://www.pexels.com/photo/selective-focus-photography-of-goat-1011630/)

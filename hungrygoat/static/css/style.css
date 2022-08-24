@@ -15,59 +15,65 @@ p {
     font-family: 'Arimo', sans-serif;
 }
 
-.title{
-   font-family: 'Caveat Brush', sans-serif; 
-   color: #344e41;
+.title {
+    font-family: 'Caveat Brush', sans-serif;
+    color: #344e41;
+}
+
+.green-bg{
+    background-color: #3a5a40;
+    color:#dad7cd
+}
+
+form i, a i{
+    color:#a3b18a;
+}
+
+.fa-plus {
+    background-color: #a3b18a;
 }
 
 /* NavBar */
-nav {
-    background-color: #344e41; 
-}
-
 .brand-logo {
-    font-family: 'Caveat Brush', sans-serif; 
+    font-family: 'Caveat Brush', sans-serif;
 }
 
 /* Hero Img */
 .hero {
-    height: 75vh;
- 
+    height: 60vh;
+
     /* Perfecst Full Page Background Image https://css-tricks.com/perfect-full-page-background-image/ */
     background: url(../images/goat.jpg) no-repeat center center fixed;
     background-size: cover;
- }
- 
- .hero-text {
+}
+
+.hero-text {
     text-align: center;
     position: absolute;
     top: 50%;
     left: 50%;
     -webkit-transform: translate(-50%, -50%);
-        -ms-transform: translate(-50%, -50%);
-            transform: translate(-50%, -50%);
+    -ms-transform: translate(-50%, -50%);
+    transform: translate(-50%, -50%);
     color: #3a5a40;
     line-height: 1.0;
     z-index: 1;
- }
+}
 
- .hero-h1-text {
+.hero-h1-text {
     font-family: "Caveat Brush", sans-serif;
     font-size: 70px;
     margin-bottom: 10px;
     text-align: center;
     letter-spacing: 2px;
     -webkit-filter: drop-shadow(0 0 0.75rem rgb(255, 255, 255));
-            filter: drop-shadow(0 0 0.75rem rgb(255, 255, 255));
- }
- 
- @media only screen and (max-width: 320px){
-    .hero-h1-text{
-    font-size: 38px;
- }}
-
-/* Footer */
-.page-footer {
-    background-color: #344e41;
+    filter: drop-shadow(0 0 0.75rem rgb(255, 255, 255));
 }
+
+@media only screen and (max-width: 320px) {
+    .hero-h1-text {
+        font-size: 38px;
+    }
+}
+
 
