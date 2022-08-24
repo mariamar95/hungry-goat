@@ -15,3 +15,7 @@ def recipes():
 @app.route("/add_recipe", methods=["GET", "POST"])
 def add_recipe():
     return render_template("add_recipe.html")
+
+@app.route("/register", methods=["GET", "POST"])
+def register():
+    return render_template("register.html")

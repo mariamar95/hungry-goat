@@ -1,0 +1,55 @@
+{% extends "base.html" %}
+{% block content%}
+
+<div class="container">
+    <h2 class="title center-align">Create an account</h2>
+    <p>Creating an account with us gives you the option to save your favorite recipes on your profile and share your
+        favourite recipes with us</p>
+    <!-- Recipe form -->
+    <div class="row">
+        <form class="col s12 l8 offset-l2" action="{{ url_for('add_recipe')}}" method="POST">
+            <div class="card-panel">
+                <h2 class="title center-align">Register</h2>
+                <div class="row">
+                    <div class="input-field col s12">
+                        <input id="username" name="username" type="text" minlength="5" maxlength="15"
+                            title="Username between 5 and 15 characters" pattern="^\S+$" class="validate" required>
+                        <label for="username"><i class="fa-solid fa-user"></i> Username</label>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="input-field col s12">
+                        <input id="email" name="email" type="email" pattern="^\S+$" class="validate" required>
+                        <label for="email"><i class="fa-solid fa-envelope"></i> Email</label>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="input-field col s12">
+                        <input id="password" name="password" type="password" minlength="5" maxlength="15"
+                            title="Password between 5 and 15 characters" pattern="^\S+$" class="validate" required>
+                        <label for="password"><i class="fa-solid fa-key"></i> Password</label>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="input-field col s12">
+                        <input id="confirm-password" name="confirm-password" type="password" minlength="5"
+                            maxlength="15" title="Confirm password to match password" pattern="^\S+$" class="validate">
+                        <label for="confirm-password"><i class="fa-solid fa-key"></i> Confirm password</label>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="center-align">
+                        <button type="submit" class="btn-large green-bg">Submit</button>
+                    </div>
+
+                </div>
+            </div>
+
+
+
+        </form>
+
+    </div>
+</div>
+
+{% endblock %}
