@@ -122,6 +122,7 @@ Photo Here
 - [Balsamiq](https://balsamiq.com/) was used to create wireframes
 - [Lucid](https://lucid.app/) was used to create database schema diagram
 - [Adobe Photoshop](https://www.adobe.com/uk/) was used to edit the hero image
+- [Favicon](https://favicon.io/) was used to create a favicon for the site.
 
 ### **Validating and Testing**
 
