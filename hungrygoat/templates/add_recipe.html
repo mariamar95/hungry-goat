@@ -29,29 +29,31 @@
                     </div>
                 </div>
                 <div class="row">
-                    <div class="input-field col s6">
+                    <div class="input-field col s12">
                         <select id="category_name" name="category_name" class="validate" required>
                             <option value="" selected>Select One</option>
                             <option value=""></option>
                         </select>
                         <label for="category_name"><i class="fa-solid fa-folder-open"></i> Category</label>
                     </div>
-                    <div class="input-field col s6">
+                </div>
+                <div class="row">
+                    <div class="input-field col s7">
                         <input id="cook_time" name="cook_time" type="text" minlength="1" maxlength="5"
                             title="Length of time in minutes up to 5 numbers long" class="validate" pattern="^[0-9]*$"
                             required>
                         <label for="cook_time"><i class="fa-solid fa-clock"></i> Cook Time (mins)</label>
                     </div>
-                </div>
-                <div class="row">
-                    <div class="input-field col s12">
-                        <input id="recipe_description" name="recipe_description" type="text"
-                            title="Description between 10 and 100 characters"
-                            pattern="^(?!.*[\p{P} ]{3})[a-zA-Z0-9\p{P} ]{10,100}$" class="validate" required>
-                        <label for="recipe_description"><i class="fa-solid fa-align-justify"></i> Description</label>
-                        <p>Between 10 and 100 characters</p>
+                    <div class="switch input-field col s5">
+                        <label>
+                            <i class="fa-solid fa-leaf"></i>
+                            Vegan
+                            <input type="checkbox" id="vegan" name="vegan">
+                            <span class="lever"></span>
+                        </label>
                     </div>
                 </div>
+
                 <!-- Code modified from Wanderlust Recipes, find more on README -->
                 <div class="row">
                     <div class="col s12">
