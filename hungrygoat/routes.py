@@ -1,5 +1,6 @@
-from flask import render_template
+from flask import flash, render_template, request, redirect, session, url_for
 from hungrygoat import app, db
+from werkzeug.security import generate_password_hash, check_password_hash
 from hungrygoat.models import Users
 
 
@@ -20,6 +21,28 @@ def add_recipe():
 
 @app.route("/register", methods=["GET", "POST"])
 def register():
+    if request.method == "POST":
+        # check if user already exists
+        existing_user = Users.query.filter(
+            Users.user_name == request.form.get("user_name").lower()).all()
+
+        if existing_user:
+            flash("Username already exists")
+            return redirect(url_for("register"))
+        
+        user = Users(
+            user_name=request.form.get("user_name").lower(),
+            email=request.form.get("email").lower(),
+            password=generate_password_hash(request.form.get("password")),
+        )
+
+        db.session.add(user)
+        db.session.commit()
+
+        session["user"] = request.form.get("username")
+        flash("Registration successful!")
+        return redirect(url_for("register", username=session["user"]))
+       
     return render_template("register.html")
 
 

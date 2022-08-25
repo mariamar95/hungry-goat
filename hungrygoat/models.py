@@ -1,6 +1,5 @@
 from hungrygoat import db
 
-
 class Users(db.Model):
     """ schema for the Users model """
     # schema for the User model
