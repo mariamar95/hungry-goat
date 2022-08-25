@@ -1,5 +1,6 @@
 from flask import render_template
 from hungrygoat import app, db
+from hungrygoat.models import Users
 
 
 @app.route("/")
