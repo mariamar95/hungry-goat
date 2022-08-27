@@ -3,7 +3,6 @@
 
 <h2 class="title center-align">Profile</h2>
 <hr class="title">
-
 <div class="row">
     <div class="col s12 m4">
         <a href="{{ url_for('add_recipe') }}" class="btn-large green-bg">Add recipe
@@ -11,7 +10,7 @@
         </a>
     </div>
     <div class="col s12 m4">
-        <a href="" class="btn-large red">Logout
+        <a href="{{ url_for('logout') }}" class="btn-large red">Logout
         </a>
     </div>
 </div>

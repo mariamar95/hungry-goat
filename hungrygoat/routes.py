@@ -89,10 +89,17 @@ def login():
             return redirect(url_for("login"))
     return render_template("login.html")
 
+
 @app.route("/profile/", methods=["GET", "POST"])
 def profile():
     return render_template("profile.html")
 
+@app.route("/logout")
+def logout():
+    """ removes user from session cookie """
+    flash("You have been logged out. See you soon!")
+    session.pop("user")
+    return redirect(url_for("login"))
 
 @app.route("/contact", methods=["GET", "POST"])
 def contact():
