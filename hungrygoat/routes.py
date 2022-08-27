@@ -62,9 +62,9 @@ def register():
 
 @app.route("/login", methods=["GET", "POST"])
 def login():
-    # if "user" in session:
-    #     flash("You're already logged in!")
-    #     return redirect(url_for('home'))
+    if "user" in session:
+        flash("You're already logged in!")
+        return redirect(url_for('profile'))
 
     if request.method == "POST":
         # check if username exists
@@ -77,8 +77,9 @@ def login():
             if check_password_hash(existing_user[0].password, request.form.get(
                     "password")):
                 session["user"] = request.form.get("user_name").lower()
-                flash("Welcome")
-                return redirect(url_for("home", user_name=session["user"]))
+                flash("Welcome {}".format(
+                    request.form.get("user_name")))
+                return redirect(url_for("profile", user_name=session["user"]))
             else:
                 # invalid password
                 flash("Incorrect username or password")
