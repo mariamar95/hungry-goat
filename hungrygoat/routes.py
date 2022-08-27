@@ -11,7 +11,6 @@ def home():
 
 @app.route("/recipes")
 def recipes():
-    recipes = mongo.db.recipes.find()
     return render_template("recipes.html", recipes=recipes)
 
 
@@ -30,7 +29,7 @@ def register():
         if existing_user:
             flash("Username already exists")
             return redirect(url_for("register"))
-        
+
         user = Users(
             user_name=request.form.get("user_name").lower(),
             email=request.form.get("email").lower(),
@@ -57,12 +56,37 @@ def register():
         session["user"] = request.form.get("user_name")
         flash("Registration successful!")
         return redirect(url_for("register", username=session["user"]))
-       
+
     return render_template("register.html")
 
 
 @app.route("/login", methods=["GET", "POST"])
 def login():
+    # if "user" in session:
+    #     flash("You're already logged in!")
+    #     return redirect(url_for('home'))
+
+    if request.method == "POST":
+        # check if username exists
+        existing_user = Users.query.filter(
+            Users.user_name == request.form.get("user_name").lower()).all()
+
+        if existing_user:
+            request.form.get("user_name")
+            # password check
+            if check_password_hash(existing_user[0].password, request.form.get(
+                    "password")):
+                session["user"] = request.form.get("user_name").lower()
+                flash("Welcome")
+                return redirect(url_for("home", user_name=session["user"]))
+            else:
+                # invalid password
+                flash("Incorrect username or password")
+                return redirect(url_for("login"))
+        else:
+            # username doesn't exist
+            flash("Incorrect Username and/or Password")
+            return redirect(url_for("login"))
     return render_template("login.html")
 
 
