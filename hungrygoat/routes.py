@@ -89,6 +89,10 @@ def login():
             return redirect(url_for("login"))
     return render_template("login.html")
 
+@app.route("/profile/", methods=["GET", "POST"])
+def profile():
+    return render_template("profile.html")
+
 
 @app.route("/contact", methods=["GET", "POST"])
 def contact():
