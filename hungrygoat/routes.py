@@ -1,5 +1,5 @@
 from flask import flash, render_template, request, redirect, session, url_for
-from hungrygoat import app, db
+from hungrygoat import app, db, mongo
 from werkzeug.security import generate_password_hash, check_password_hash
 from hungrygoat.models import Users
 
@@ -39,7 +39,7 @@ def register():
         db.session.add(user)
         db.session.commit()
 
-        session["user"] = request.form.get("username")
+        session["user"] = request.form.get("user_name")
         flash("Registration successful!")
         return redirect(url_for("register", username=session["user"]))
        
@@ -54,4 +54,3 @@ def login():
 @app.route("/contact", methods=["GET", "POST"])
 def contact():
     return render_template("contact.html")
-
