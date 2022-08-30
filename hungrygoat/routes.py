@@ -77,8 +77,7 @@ def login():
             if check_password_hash(existing_user[0].password, request.form.get(
                     "password")):
                 session["user"] = request.form.get("user_name").lower()
-                flash("Welcome {}".format(
-                    request.form.get("user_name")))
+                flash("Welcome {}".format(request.form.get("user_name")))
                 return redirect(url_for("profile", user_name=session["user"]))
             else:
                 # invalid password
@@ -95,12 +94,14 @@ def login():
 def profile():
     return render_template("profile.html")
 
+
 @app.route("/logout")
 def logout():
     """ removes user from session cookie """
     flash("You have been logged out. See you soon!")
     session.pop("user")
     return redirect(url_for("login"))
+
 
 @app.route("/contact", methods=["GET", "POST"])
 def contact():
