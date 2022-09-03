@@ -1,5 +1,6 @@
 from hungrygoat import db
 
+
 class Category(db.Model):
     """schema for Category model"""
     # schema for the Category model
