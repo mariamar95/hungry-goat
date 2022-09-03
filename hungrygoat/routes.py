@@ -11,12 +11,37 @@ def home():
 
 @app.route("/recipes")
 def recipes():
+    
     return render_template("recipes.html", recipes=recipes)
 
 
 @app.route("/add_recipe", methods=["GET", "POST"])
 def add_recipe():
-    return render_template("add_recipe.html")
+
+    if "user" not in session:
+        flash("You need to be logged in to add a task")
+        return redirect(url_for("login"))
+
+    if request.method == "POST":
+
+        recipe = {
+            "recipe_title": request.form.get("recipe_title"),
+            "image_url": request.form.get("image_url"),
+            "servings": request.form.get("servings"),
+            "category_name": request.form.get("category_name"),
+            "cook_time": request.form.get("cook_time"),
+            "vegan": request.form.get("vegan"),
+            "ingredients": request.form.get("ingredients"),
+            "method_step": request.form.get("method_step"),
+            "created_by": session["user"]
+            }
+
+        mongo.db.recipes.insert_one(recipe)
+        flash("Thank you for sharing this recipe with us!")
+        return redirect(url_for("recipes"))
+
+    categories = list(Category.query.order_by(Category.category_name).all())
+    return render_template("add_recipe.html", categories=categories)
 
 
 @app.route("/categories")
@@ -53,7 +78,7 @@ def edit_category(category_id):
     if "user" not in session or session["user"] != "admin":
         flash("You must be admin to manage categories!")
         return redirect(url_for("home"))
-    
+
     category = Category.query.get_or_404(category_id)
     if request.method == "POST":
         category.category_name = request.form.get("category_name")

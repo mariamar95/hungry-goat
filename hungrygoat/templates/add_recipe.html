@@ -30,9 +30,11 @@
                 </div>
                 <div class="row">
                     <div class="input-field col s12">
-                        <select id="category_name" name="category_name" class="validate" required>
-                            <option value="" selected>Select One</option>
-                            <option value=""></option>
+                        <select name="category_id" id="category_id" class="validate" required>
+                            <option value="" disabled selected>Choose Category</option>
+                            {% for category in categories %}
+                                <option value="{{ category.id }}">{{ category.category_name }}</option>
+                            {% endfor %}
                         </select>
                         <label for="category_name"><i class="fa-solid fa-folder-open"></i> Category</label>
                     </div>
