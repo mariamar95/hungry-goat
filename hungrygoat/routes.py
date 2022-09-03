@@ -52,7 +52,7 @@ def add_category():
 def edit_category(category_id):
     if "user" not in session or session["user"] != "admin":
         flash("You must be admin to manage categories!")
-        return redirect(url_for("get_tasks"))
+        return redirect(url_for("home"))
     
     category = Category.query.get_or_404(category_id)
     if request.method == "POST":
