@@ -48,6 +48,20 @@ def add_category():
     return render_template("add_category.html")
 
 
+@app.route("/edit_category/<int:category_id>", methods=["GET", "POST"])
+def edit_category(category_id):
+    if "user" not in session or session["user"] != "admin":
+        flash("You must be admin to manage categories!")
+        return redirect(url_for("get_tasks"))
+    
+    category = Category.query.get_or_404(category_id)
+    if request.method == "POST":
+        category.category_name = request.form.get("category_name")
+        db.session.commit()
+        return redirect(url_for("categories"))
+    return render_template("edit_category.html", category=category)
+
+
 @app.route("/register", methods=["GET", "POST"])
 def register():
     if request.method == "POST":
