@@ -1,7 +1,7 @@
 from flask import flash, render_template, request, redirect, session, url_for
 from hungrygoat import app, db, mongo
 from werkzeug.security import generate_password_hash, check_password_hash
-from hungrygoat.models import Users
+from hungrygoat.models import Users, Category
 
 
 @app.route("/")
@@ -17,6 +17,20 @@ def recipes():
 @app.route("/add_recipe", methods=["GET", "POST"])
 def add_recipe():
     return render_template("add_recipe.html")
+
+
+@app.route("/categories")
+def categories():
+    """
+    checks if user is superadmin
+    if not, user is redirected to recipes page
+    """
+    if "user" not in session or session["user"] != "admin":
+        flash("You must be a superadmin to manage categories of recipes!")
+        return redirect(url_for("recipes"))
+
+    categories = list(Category.query.order_by(Category.category_name).all())
+    return render_template("categories.html", categories=categories)
 
 
 @app.route("/register", methods=["GET", "POST"])
