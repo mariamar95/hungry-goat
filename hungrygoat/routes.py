@@ -62,6 +62,19 @@ def edit_category(category_id):
     return render_template("edit_category.html", category=category)
 
 
+@app.route("/delete_category/<int:category_id>")
+def delete_category(category_id):
+    if session["user"] != "admin":
+        flash("You must be admin to manage categories!")
+        return redirect(url_for("home"))
+
+    category = Category.query.get_or_404(category_id)
+    db.session.delete(category)
+    db.session.commit()
+    mongo.db.tasks.delete_many({"category_id": str(category_id)})
+    return redirect(url_for("categories"))
+
+
 @app.route("/register", methods=["GET", "POST"])
 def register():
     if request.method == "POST":
