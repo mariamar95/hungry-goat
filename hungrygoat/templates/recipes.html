@@ -2,6 +2,7 @@
 {% block content%}
 <h2 class="center-align title">Recipes</h2>
 
+<!--Display button only if user is logged in-->
 {% if session.user %}
 <div class="row">
     <div class="col s12 center-align">
@@ -12,5 +13,41 @@
 </div>
 {% endif %}
 
-{% endblock %}
+<!--Recipes-->
 
+<div class="row">
+    {% for recipe in recipes%}
+    <div class="col s12 m4">
+        <div class="card">
+            <div class="card-image">
+                {% if recipe.image_url %}
+                <img src="{{ recipe.image_url }}" alt="Image of recipe">
+                <!-- If recipe doesn't have an image use alternative -->
+                {% else %}
+                <img src="{{ url_for('static', filename='/images/recipe_image.jpg') }}" alt="Image of recipe">
+                {% endif %}
+                <a class="btn-floating halfway-fab waves-effect waves-light red"><i class="fa-solid fa-heart"></i></a>
+            </div>
+            <div class="card-content">
+                <div class="row">
+                    <div class="col s12">
+                        <a href="" class="card-title title">{{ recipe.recipe_title}}</a>
+                        <p><i class="fas fa-clock"></i> Cook: {{ recipe.cook_time }} mins</p>
+                        <p><i class="fas fa-utensils"></i> Serves: {{ recipe.servings }}</p>
+                        {% if recipe.vegan == "on" %}
+                        <i class="fa-solid fa-leaf"> Vegan</i>
+                        {% endif %}
+                        <p>Created By: {{ recipe.created_by }}</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    {% endfor %}
+</div>
+
+
+
+
+
+{% endblock %}

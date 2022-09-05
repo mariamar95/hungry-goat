@@ -11,7 +11,7 @@ def home():
 
 @app.route("/recipes")
 def recipes():
-    
+    recipes = list(mongo.db.recipes.find())
     return render_template("recipes.html", recipes=recipes)
 
 
