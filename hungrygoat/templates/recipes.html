@@ -29,9 +29,9 @@
                 <a class="btn-floating halfway-fab waves-effect waves-light red"><i class="fa-solid fa-heart"></i></a>
             </div>
             <div class="card-content">
-                <div class="row">
+                <div class="row modal-trigger" href="#modal1">
                     <div class="col s12">
-                        <a href="" class="card-title title">{{ recipe.recipe_title}}</a>
+                        <a href="{{ url_for('recipe')}}" class="card-title title">{{ recipe.recipe_title}}</a>
                         <p><i class="fas fa-clock"></i> Cook: {{ recipe.cook_time }} mins</p>
                         <p><i class="fas fa-utensils"></i> Serves: {{ recipe.servings }}</p>
                         {% if recipe.vegan == "on" %}
@@ -43,9 +43,43 @@
             </div>
         </div>
     </div>
+
+    <div id="modal1" class="modal modal-fixed-footer">
+        <div class="modal-content">
+            <h4 class="title center-align">Recipe Title</h4>
+            <div class="row">
+                <div class="col s8">
+                    <h5 class="title ">Ingredients</h5>
+                    <ul>
+                        {% for ingredient in recipe.ingredients %}
+                        <li>{{ ingredient }}</li>
+                        {% endfor %}
+                    </ul>
+                </div>
+                <div class="col">
+                    <p><i class="fa-solid fa-folder"></i> Cateogry: {{ recipe.category }}</p>
+                    <p><i class="fas fa-clock"></i> Cook: {{ recipe.cook_time }} mins</p>
+                    <p><i class="fas fa-utensils"></i> Serves: {{ recipe.servings }}</p>
+                    {% if recipe.vegan == "on" %}
+                    <i class="fa-solid fa-leaf"> Vegan</i>
+                    {% endif %}
+                </div>
+            </div>
+            <div>
+                <h5 class="title">Steps</h5>
+                <ol>
+                    {% for step in recipe.method_step %}
+                    <li>{{ step }}</li>
+                    {% endfor %}
+                </ol>
+            </div>
+        </div>
+        <div class="modal-footer">
+            <a href="#!" class="modal-close waves-effect waves-green btn-flat green-bg">Close</a>
+        </div>
+    </div>
     {% endfor %}
 </div>
-
 
 
 

@@ -3,6 +3,7 @@ $(document).ready(function(){
   $('.sidenav').sidenav();
   $('select').formSelect();
   $('textarea#message').characterCounter();
+  $('.modal').modal();
 });
 
 // Code modified from Wanderlust Recipes, find more on README
