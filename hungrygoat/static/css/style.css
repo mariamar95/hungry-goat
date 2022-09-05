@@ -88,6 +88,6 @@ hr {
 }
 
 /*Recipes*/
-.card-content{
+.card-content, .modal-content i{
     color: #344e41;
 }
