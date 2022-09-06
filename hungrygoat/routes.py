@@ -73,7 +73,8 @@ def edit_recipe(recipe_id):
             "created_by": session["user"]
             }
 
-        mongo.db.recipes.update_one({"_id": ObjectId(recipe_id)}, {"$set": submit})
+        mongo.db.recipes.update_one({"_id": ObjectId(recipe_id)},
+                                    {"$set": submit})
         flash("Recipe successfully updated!")
 
         return redirect(url_for("recipes"))
@@ -82,6 +83,21 @@ def edit_recipe(recipe_id):
 
     return render_template("edit_recipe.html",
                            recipe=recipe, categories=categories)
+
+
+@app.route("/delete_recipe/<recipe_id>")
+def delete_recipe(recipe_id):
+    """ deletes the recipe from mongodb """
+    recipe = mongo.db.recipes.find_one({"_id": ObjectId(recipe_id)})
+
+    if "user" not in session or session["user"] != recipe["created_by"]:
+        flash("You must be logged in to edit your own recipes!")
+        return redirect(url_for("recipes"))
+
+    mongo.db.recipes.delete_one({"_id": ObjectId(recipe_id)})
+    flash("Recipe Successfully Deleted")
+    return redirect(url_for("recipes"))
+
 
 @app.route("/categories")
 def categories():
