@@ -1,0 +1,140 @@
+{% extends "base.html" %}
+{% block content %}
+
+<h2 class="center-align title">Edit Recipe</h2>
+
+<div class="container">
+
+    <!-- Recipe form -->
+    <div class="row">
+        <form class="col s12 l8 offset-l2" action="{{ url_for('edit_recipe', recipe_id=recipe._id) }}" method="POST">
+            <div class="card-panel">
+                <div class="row">
+                    <div class="input-field col s12">
+                        <!--Title-->
+                        <input id="recipe_title" name="recipe_title" type="text" class="validate"
+                            pattern="^(?!.*[\p{P} ]{3})[a-zA-Z0-9\p{P} ]{5,25}$" title="5-25 characters"
+                            value="{{ recipe.recipe_title }}" required>
+                        <label for="recipe_title"><i class="fa-solid fa-bell-concierge"></i>Recipe Title </label>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="input-field col s8">
+                        <!--IMG-->
+                        <input id="image_url" name="image_url" type="text" class="validate"
+                            value="{{ recipe.image_url }}">
+                        <label for="image_url"><i class="fa-solid fa-image"></i> Upload image url (optional)</label>
+                    </div>
+                    <div class="input-field col s4">
+                        <!--Servings-->
+                        <input id="servings" name="servings" type="number" min="1" max="20"
+                            title="Servings 1-20 using numeric values" class="validate" value="{{ recipe.servings }}"
+                            required>
+
+                        <label for="servings"><i class="fa-solid fa-utensils"></i> Servings</i></label>
+                    </div>
+                </div>
+                <div class="row">
+                    <!--Category-->
+                    <div class="input-field col s12">
+                        <select name="category_id" id="category_id" class="validate" required>
+                            <option value="" disabled selected>Update Category</option>
+                            {% for category in categories %}
+                                <option value="{{ category.id }}">{{ category.category_name }}</option>
+                            {% endfor %}
+                        </select>
+                        <label for="category_name"><i class="fa-solid fa-folder-open"></i> Category</label>
+                    </div>
+                </div>
+                <div class="row">
+                    <!--CookTime-->
+                    <div class="input-field col s7">
+                        <input id="cook_time" name="cook_time" type="text" minlength="1" maxlength="5"
+                            title="Length of time in minutes up to 5 numbers long" class="validate" value="{{ recipe.cook_time }}" pattern="^[0-9]*$"
+                            required>
+                        <label for="cook_time"><i class="fa-solid fa-clock"></i> Cook Time (mins)</label>
+                    </div>
+                    <!--Vegan Switch-->
+                    <div class="switch input-field col s5">
+                        <label>
+                            <i class="fa-solid fa-leaf"></i>
+                            Vegan
+                            
+                            <input type="checkbox" id="vegan" name="vegan" required>
+                            <span class="lever"></span>
+                        </label for="vegan">
+                    </div>
+                </div>
+
+                <!-- Code modified from Wanderlust Recipes, find more on README -->
+                <div class="row">
+                    <div class="col s12">
+                        <h6 class="grey-text"><i class="fa-solid fa-bowl-food"></i> Ingredients</h6>
+                    </div>
+                    <div class="col s12">
+                        <ul id="ingredients" class="collection validate">
+                            {% for ingredient in recipe.ingredients %}
+                            <li class="collection-item">
+                                <div class="input-field">
+                                    <input name="ingredients" type="text" maxlength="100" class="validate"
+                                        value="{{ ingredient }}">
+                                </div>
+                                <a class="remove-list-item">
+                                    <i class="fas fa-times"></i>
+                                    <span class="sr-only">Remove Ingredient</span>
+                                </a>
+                            </li>
+                            {% endfor %}
+                            <li class="collection-item">
+                                <a class="btn-floating btn-small waves-effect waves-light add-ingredient-list-item">
+                                    <i class="fas fa-plus"></i>
+                                    <span class="sr-only">Add Ingredient</span>
+                                </a>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col s12">
+                        <h6 class="grey-text"><i class="fa-solid fa-circle-right"></i> Method</h6>
+                    </div>
+                    <div class="col s12">
+                        <ul id="method_step" class="collection validate">
+                            {% for step in recipe.method_step %}
+                            <li class="collection-item">
+                                <a class="remove-list-item">
+                                    <i class="fas fa-times"></i>
+                                    <span class="sr-only">Add Method Step</span>
+                                </a>
+                                <div class="input-field">
+                                    <textarea name="method_step" class="materialize-textarea" spellcheck="false"
+                                        style="height: 43px;" required>{{- step -}}</textarea>
+                                </div>
+                            </li>
+                            {% endfor %}
+                            <li class="collection-item">
+                                <a class="btn-floating btn-small waves-effect waves-light add-method-step-item">
+                                    <i class="fas fa-plus"></i>
+                                    <span class="sr-only">Add Ingredient</span>
+                                </a>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col s12 m6 center-align">
+                        <button type="submit" class="wave-effect btn-large green-bg">Submit</button>
+                    </div>
+                    <div class="col s12 m6 center-align">
+                        <a href="{{ url_for('recipes') }}" class="wave-effect btn-large red">Cancel</a>
+                    </div>
+
+                </div>
+            </div>
+
+        </form>
+
+    </div>
+</div>
+
+{% endblock %}

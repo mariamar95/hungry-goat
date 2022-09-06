@@ -50,6 +50,39 @@ def add_recipe():
     return render_template("add_recipe.html", categories=categories)
 
 
+@app.route("/edit_recipe<recipe_id>", methods=["GET", "POST"])
+def edit_recipe(recipe_id): 
+
+    recipe = mongo.db.recipes.find_one({"_id": ObjectId(recipe_id)})
+
+    if "user" not in session or session["user"] != recipe["created_by"]:
+        flash("You can edit only your own recipes and must be logged in!")
+        return redirect(url_for("recipes"))
+
+    if request.method == "POST":
+        request.form.get("recipe_title")
+        submit = {
+            "recipe_title": request.form.get("recipe_title"),
+            "image_url": request.form.get("image_url"),
+            "servings": request.form.get("servings"),
+            "category_name": request.form.get("category_name"),
+            "cook_time": request.form.get("cook_time"),
+            "vegan": request.form.get("vegan"),
+            "ingredients": request.form.getlist("ingredients"),
+            "method_step": request.form.getlist("method_step"),
+            "created_by": session["user"]
+            }
+
+        mongo.db.recipes.update_one({"_id": ObjectId(recipe_id)}, {"$set": submit})
+        flash("Recipe successfully updated!")
+
+        return redirect(url_for("recipes"))
+
+    categories = list(Category.query.order_by(Category.category_name).all())
+
+    return render_template("edit_recipe.html",
+                           recipe=recipe, categories=categories)
+
 @app.route("/categories")
 def categories():
     """
