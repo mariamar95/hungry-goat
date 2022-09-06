@@ -1,4 +1,5 @@
 from flask import flash, render_template, request, redirect, session, url_for
+from bson.objectid import ObjectId
 from hungrygoat import app, db, mongo
 from werkzeug.security import generate_password_hash, check_password_hash
 from hungrygoat.models import Users, Category
@@ -6,18 +7,23 @@ from hungrygoat.models import Users, Category
 
 @app.route("/")
 def home():
+    """ Display Home Page """
     return render_template("home.html")
 
 
 @app.route("/recipes")
 def recipes():
+    """ Display recipes """
+
     recipes = list(mongo.db.recipes.find())
     return render_template("recipes.html", recipes=recipes)
 
 
 @app.route("/add_recipe", methods=["GET", "POST"])
 def add_recipe():
+    """ Adds recipe on the DB """
 
+    # if the user is not logged in, it ridirects to login
     if "user" not in session:
         flash("You need to be logged in to add a task")
         return redirect(url_for("login"))
@@ -31,8 +37,8 @@ def add_recipe():
             "category_name": request.form.get("category_name"),
             "cook_time": request.form.get("cook_time"),
             "vegan": request.form.get("vegan"),
-            "ingredients": request.form.get("ingredients"),
-            "method_step": request.form.get("method_step"),
+            "ingredients": request.form.getlist("ingredients"),
+            "method_step": request.form.getlist("method_step"),
             "created_by": session["user"]
             }
 
