@@ -32,12 +32,13 @@
                             <li class="nav-item">
                                 <a class="nav-link" href="{{ url_for('profile', user_name=session['user']) }}">Profile</a>
                             </li>
-                        {% endif%}
-                        {% if session.user|lower == "admin"|lower %}
-                            <li><a href="{{ url_for('categories') }}">Manage Categories</a></li>
+                            {% if session.user|lower == "admin"|lower %}
+                                <li><a href="{{ url_for('categories') }}">Manage Categories</a></li>
+                            {% endif %}
+                        {% else %}
+                            <li><a href="{{ url_for('login') }}">Login</a></li>
+                            <li><a href="{{ url_for('register') }}">Register</a></li>
                         {% endif %}
-                        <li><a href="{{ url_for('login') }}">Login</a></li>
-                        <li><a href="{{ url_for('register') }}">Register</a></li>
                         <li><a href="{{ url_for('contact') }}">Contact</a></li>
                     </ul>
             </div>
@@ -50,12 +51,13 @@
                 <li class="nav-item">
                     <a class="nav-link" href="{{ url_for('profile', user_name=session['user']) }}">Profile</a>
                 </li>
-            {% endif%}
-            {% if session.user|lower == "admin"|lower %}
-                <li><a href="{{ url_for('categories') }}">Manage Categories</a></li>
+                {% if session.user|lower == "admin"|lower %}
+                    <li><a href="{{ url_for('categories') }}">Manage Categories</a></li>
+                {% endif %}
+            {% else %}
+                <li><a href="{{ url_for('login') }}">Login</a></li>
+                <li><a href="{{ url_for('register') }}">Register</a></li>
             {% endif %}
-            <li><a href="{{ url_for('login') }}">Login</a></li>
-            <li><a href="{{ url_for('register') }}">Register</a></li>
             <li><a href="{{ url_for('contact') }}">Contact</a></li>
         </ul>
 
