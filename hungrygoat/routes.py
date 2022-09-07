@@ -99,16 +99,23 @@ def edit_recipe(recipe_id):
 
 @app.route("/delete_recipe/<recipe_id>")
 def delete_recipe(recipe_id):
-    """ deletes the recipe from mongodb """
+    """
+    Allows user to delete their recipes
+    Allows admin to delete all recipes
+    """
     recipe = mongo.db.recipes.find_one({"_id": ObjectId(recipe_id)})
-
-    if "user" not in session or session["user"] != recipe["created_by"]:
-        flash("You must be logged in to edit your own recipes!")
+    if "user" in session:
+        # Users can only delete their own recipes, admin can delete all recipes
+        if session["user"] == "admin" or session["user"] == recipe["created_by"]:
+            mongo.db.recipes.delete_one({"_id": ObjectId(recipe_id)})
+            flash("You deleted a recipe!")
+            return redirect(url_for("recipes"))
+        else:
+            flash("You are not authorised to delete this recipe")
+            return redirect(url_for("recipes"))
+    else:
+        flash("You are not authorised to delete this recipe")
         return redirect(url_for("recipes"))
-
-    mongo.db.recipes.delete_one({"_id": ObjectId(recipe_id)})
-    flash("Recipe Successfully Deleted")
-    return redirect(url_for("recipes"))
 
 
 @app.route("/categories")
@@ -203,7 +210,7 @@ def register():
         # puts user into 'session' cookie
         session["user"] = request.form.get("user_name")
         flash("Registration successful!")
-        return redirect(url_for("register", username=session["user"]))
+        return redirect(url_for("recipes", username=session["user"]))
 
     return render_template("register.html")
 
