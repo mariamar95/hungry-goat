@@ -59,8 +59,11 @@
                         <label>
                             <i class="fa-solid fa-leaf"></i>
                             Vegan
-                            
-                            <input type="checkbox" id="vegan" name="vegan">
+                            {% if recipe.vegan == "on" %}
+                                <input type="checkbox" id="vegan" name="vegan" checked>
+                            {% else %}
+                                <input type="checkbox" id="vegan" name="vegan">
+                            {% endif %}
                             <span class="lever"></span>
                         </label for="vegan">
                     </div>
