@@ -16,14 +16,15 @@ def recipes():
     """ Display recipes """
 
     recipes = list(mongo.db.recipes.find())
-    return render_template("recipes.html", recipes=recipes)
+    categories = list(Category.query.order_by(Category.category_name).all())
+    return render_template("recipes.html", recipes=recipes, categories=categories)
 
 
 @app.route("/add_recipe", methods=["GET", "POST"])
 def add_recipe():
     """ Adds recipe on the DB """
 
-    # if the user is not logged in, it ridirects to login
+    # if the user is not logged in, it redirects to login page
     if "user" not in session:
         flash("You need to be logged in to add a task")
         return redirect(url_for("login"))
@@ -34,7 +35,7 @@ def add_recipe():
             "recipe_title": request.form.get("recipe_title"),
             "image_url": request.form.get("image_url"),
             "servings": request.form.get("servings"),
-            "category_name": request.form.get("category_name"),
+            "category_id": request.form.get("category_id"),
             "cook_time": request.form.get("cook_time"),
             "vegan": request.form.get("vegan"),
             "ingredients": request.form.getlist("ingredients"),
