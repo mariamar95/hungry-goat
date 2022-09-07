@@ -238,9 +238,25 @@ def login():
     return render_template("login.html")
 
 
-@app.route("/profile/", methods=["GET", "POST"])
+@app.route("/profile", methods=["GET", "POST"])
 def profile():
-    return render_template("profile.html")
+    """
+    Checks if user in session
+    Queries MongoDB for recipes created by user in session
+    Queries Postgres for categories
+    Renders all available recipes created by user
+    including corresponding categories
+    Redirects user to log in page if user not logged in
+    """
+    if "user" in session:
+        recipe_list = mongo.db.recipes.find(
+            {"created_by": {'$eq': session['user']}})
+        categories = list(
+                          Category.query.order_by(
+                            Category.category_name).all())
+        return render_template("profile.html", username=session["user"],
+                               recipe_list=recipe_list, categories=categories)
+    return redirect(url_for("login"))
 
 
 @app.route("/logout")
