@@ -3,7 +3,6 @@ import re
 from flask import Flask
 from flask_pymongo import PyMongo
 from flask_sqlalchemy import SQLAlchemy
-from bson.objectid import ObjectId
 if os.path.exists("env.py"):
     import env
 
@@ -21,4 +20,4 @@ app.config["SQLALCHEMY_DATABASE_URI"] = uri  # heroku
 db = SQLAlchemy(app)
 mongo = PyMongo(app)
 
-from hungrygoat import routes  
+from hungrygoat import routes

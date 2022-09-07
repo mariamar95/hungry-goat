@@ -17,7 +17,18 @@ def recipes():
 
     recipes = list(mongo.db.recipes.find())
     categories = list(Category.query.order_by(Category.category_name).all())
-    return render_template("recipes.html", recipes=recipes, categories=categories)
+    return render_template("recipes.html",
+                           recipes=recipes, categories=categories)
+
+
+@app.route("/search_recipes", methods=["GET", "POST"])
+def search_recipes():
+    """ Finds recipes and displays recipes from mongo """
+
+    query = request.form.get("query")
+    recipes = list(mongo.db.recipes.find({"$text": {"$search": query}}))
+
+    return render_template("recipes.html", recipes=recipes)
 
 
 @app.route("/add_recipe", methods=["GET", "POST"])
