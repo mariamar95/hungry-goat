@@ -4,13 +4,13 @@
 
 <!--Display button only if user is logged in-->
 {% if session.user %}
-    <div class="row">
-        <div class="col s12 center-align">
-            <a href="{{ url_for('add_recipe') }}" class="btn-large green-bg">Add recipe
-                <i class="fas fa-plus-square right"></i>
-            </a>
-        </div>
+<div class="row">
+    <div class="col s12 center-align">
+        <a href="{{ url_for('add_recipe') }}" class="btn-large green-bg">Add recipe
+            <i class="fas fa-plus-square right"></i>
+        </a>
     </div>
+</div>
 {% endif %}
 
 
@@ -36,78 +36,79 @@
 
 <!--Recipes-->
 {% if recipes|length > 0 %}
-    <div class="row">
-        {% for recipe in recipes%}
-            <div class="col s12 m4">
-                <div class="card">
-                    <div class="card-image">
-                        {% if recipe.image_url %}
-                        <img src="{{ recipe.image_url }}" alt="Image of recipe">
-                        <!-- If recipe doesn't have an image use alternative -->
-                        {% else %}
-                        <img src="{{ url_for('static', filename='/images/recipe_image.jpg') }}" alt="Image of recipe">
+<div class="row">
+    {% for recipe in recipes%}
+    <div class="col s12 m4">
+        <div class="card">
+            <div class="card-image">
+                {% if recipe.image_url %}
+                <img src="{{ recipe.image_url }}" alt="Image of recipe">
+                <!-- If recipe doesn't have an image use alternative -->
+                {% else %}
+                <img src="{{ url_for('static', filename='/images/recipe_image.jpg') }}" alt="Image of recipe">
+                {% endif %}
+            </div>
+            <div class="card-content">
+                <button class="row modal-trigger" href="#recipe-modal-{{ recipe._id }}">
+                    <div class="col s12">
+                        <h3 class="card-title title">{{ recipe.recipe_title }}</h3>
+                        <p><i class="fas fa-clock"></i> Cook: {{ recipe.cook_time }} mins</p>
+                        <p><i class="fas fa-utensils"></i> Serves: {{ recipe.servings }}</p>
+                        {% if recipe.vegan == "on" %}
+                        <i class="fa-solid fa-leaf"> Vegan</i>
                         {% endif %}
+                        <p>Created By: {{ recipe.created_by }}</p>
                     </div>
-                    <div class="card-content">
-                        <div class="row modal-trigger" href="#recipe-modal-{{ recipe._id }}">
-                            <div class="col s12">
-                                <h3 class="card-title title">{{ recipe.recipe_title}}</h3>
-                                <p><i class="fas fa-clock"></i> Cook: {{ recipe.cook_time }} mins</p>
-                                <p><i class="fas fa-utensils"></i> Serves: {{ recipe.servings }}</p>
-                                {% if recipe.vegan == "on" %}
-                                    <i class="fa-solid fa-leaf"> Vegan</i>
-                                {% endif %}
-                                <p>Created By: {{ recipe.created_by }}</p>
-                            </div>
-                        </div>
-                        <div class="card-body text-center">
-                            {% if session.user|lower == recipe.created_by|lower or session.user|lower == 'admin' %}
-                                <a href="{{ url_for('edit_recipe', recipe_id=recipe._id) }}" class="btn green-bg">Edit Recipe</a>
-                                <a href="{{ url_for('delete_recipe', recipe_id=recipe._id) }}" class="btn red"><i class="fa-solid fa-trash"></i> Delete</a>
-                            {% endif %}
-                        </div>
-                    </div>
+                </button>
+                <div class="card-body text-center">
+                    {% if session.user|lower == recipe.created_by|lower or session.user|lower == 'admin' %}
+                    <a href="{{ url_for('edit_recipe', recipe_id=recipe._id) }}" class="btn green-bg">Edit Recipe</a>
+                    <a href="{{ url_for('delete_recipe', recipe_id=recipe._id) }}" class="btn red"><i
+                            class="fa-solid fa-trash"></i> Delete</a>
+                    {% endif %}
                 </div>
             </div>
-            <!--Modal-->
-            <div id="recipe-modal-{{ recipe._id }}" class="modal modal-fixed-footer">
-                <div class="modal-content">
-                    <h4 class="title center-align">{{ recipe.recipe_title}}</h4>
-                    <div class="row">
-                        <div class="col s8">
-                            <h5 class="title ">Ingredients</h5>
-                            <ul>
-                                {% for ingredient in recipe.ingredients %}
-                                    <li>{{ ingredient }}</li>
-                                {% endfor %}
-                            </ul>
-                        </div>
-                        <div class="col">
-                            <p><i class="fas fa-clock"></i> Cook: {{ recipe.cook_time }} mins</p>
-                            <p><i class="fas fa-utensils"></i> Serves: {{ recipe.servings }}</p>
-                            <p><i class="fa-solid fa-bowl-food"></i> Category: {{ recipe.category_name }}</p>
-                            {% if recipe.vegan == "on" %}
-                                <i class="fa-solid fa-leaf"> Vegan</i>
-                            {% endif %}
-                        </div>
-                    </div>
-                    <div>
-                        <h5 class="title">Steps</h5>
-                        <ol>
-                            {% for step in recipe.method_step %}
-                                <li>{{ step }}</li>
-                            {% endfor %}
-                        </ol>
-                    </div>
-                </div>
-                <div class="modal-footer">
-                    <a href="#!" class="modal-close waves-effect waves-green btn-flat green-bg">Close</a>
-                </div>
-            </div>
-        {% endfor %}
+        </div>
     </div>
+    <!--Modal-->
+    <div id="recipe-modal-{{ recipe._id }}" class="modal modal-fixed-footer">
+        <div class="modal-content">
+            <h4 class="title center-align">{{ recipe.recipe_title}}</h4>
+            <div class="row">
+                <div class="col s8">
+                    <h5 class="title ">Ingredients</h5>
+                    <ul>
+                        {% for ingredient in recipe.ingredients %}
+                        <li>{{ ingredient }}</li>
+                        {% endfor %}
+                    </ul>
+                </div>
+                <div class="col">
+                    <p><i class="fas fa-clock"></i> Cook: {{ recipe.cook_time }} mins</p>
+                    <p><i class="fas fa-utensils"></i> Serves: {{ recipe.servings }}</p>
+                    <p><i class="fa-solid fa-bowl-food"></i> Category: {{ recipe.category_name }}</p>
+                    {% if recipe.vegan == "on" %}
+                    <i class="fa-solid fa-leaf"> Vegan</i>
+                    {% endif %}
+                </div>
+            </div>
+            <div>
+                <h5 class="title">Steps</h5>
+                <ol>
+                    {% for step in recipe.method_step %}
+                    <li>{{ step }}</li>
+                    {% endfor %}
+                </ol>
+            </div>
+        </div>
+        <div class="modal-footer">
+            <a href="#!" class="modal-close waves-effect waves-green btn-flat green-bg">Close</a>
+        </div>
+    </div>
+    {% endfor %}
+</div>
 {% else %}
-    <h3 class="red-text text-darken-4 center-align">No Results Found</h3>
+<h3 class="red-text text-darken-4 center-align">No Results Found</h3>
 {% endif %}
 
 {% endblock %}
