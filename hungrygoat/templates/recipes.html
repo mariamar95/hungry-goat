@@ -42,14 +42,16 @@
         <div class="card">
             <div class="card-image">
                 {% if recipe.image_url %}
-                <img src="{{ recipe.image_url }}" alt="Image of recipe">
+                <a class="modal-trigger" href="#recipe-modal-{{ recipe._id }}">
+                    <img src="{{ recipe.image_url }}" alt="Image of recipe"></a>
                 <!-- If recipe doesn't have an image use alternative -->
                 {% else %}
-                <img src="{{ url_for('static', filename='/images/recipe_image.jpg') }}" alt="Image of recipe">
+                <a class="modal-trigger" href="#recipe-modal-{{ recipe._id }}">
+                    <img src="{{ url_for('static', filename='/images/recipe_image.jpg') }}" alt="Image of recipe"></a>
                 {% endif %}
             </div>
             <div class="card-content">
-                <button class="row modal-trigger" href="#recipe-modal-{{ recipe._id }}">
+                <div class="row">
                     <div class="col s12">
                         <h3 class="card-title title">{{ recipe.recipe_title }}</h3>
                         <p><i class="fas fa-clock"></i> Cook: {{ recipe.cook_time }} mins</p>
@@ -59,7 +61,7 @@
                         {% endif %}
                         <p>Created By: {{ recipe.created_by }}</p>
                     </div>
-                </button>
+                </div>
                 <div class="card-body text-center">
                     {% if session.user|lower == recipe.created_by|lower or session.user|lower == 'admin' %}
                     <a href="{{ url_for('edit_recipe', recipe_id=recipe._id) }}" class="btn green-bg">Edit Recipe</a>
