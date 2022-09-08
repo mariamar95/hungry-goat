@@ -45,7 +45,7 @@ def add_recipe():
 
     # if the user is not logged in, it redirects to login page
     if "user" not in session:
-        flash("You need to be logged in to add a task")
+        flash("You need to be logged in to add a recipe")
         return redirect(url_for("login"))
 
     if request.method == "POST":
