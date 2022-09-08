@@ -14,8 +14,16 @@ def home():
 @app.route("/recipes")
 def recipes():
     """ Display recipes """
-
+    # get all recipes
     recipes = list(mongo.db.recipes.find())
+    # loop over recipes
+    for recipe in recipes:
+        # get category from querying DB by recipe's category_id
+        category = Category.query.filter(Category.id == recipe['category_id']).first()
+        # add 'category_name' field to recipe with val from category above (if it exists)
+        if category:
+            recipe['category_name'] = category.category_name
+
     categories = list(Category.query.order_by(Category.category_name).all())
     return render_template("recipes.html",
                            recipes=recipes, categories=categories)

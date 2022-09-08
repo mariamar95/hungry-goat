@@ -86,9 +86,7 @@
                         <div class="col">
                             <p><i class="fas fa-clock"></i> Cook: {{ recipe.cook_time }} mins</p>
                             <p><i class="fas fa-utensils"></i> Serves: {{ recipe.servings }}</p>
-                            {% for category in categories if category.id == recipe.category_id %}
-                                <p><i class="fa-solid fa-bowl-food"></i> Category: {{ category.category_name }}</p>
-                            {% endfor %}
+                            <p><i class="fa-solid fa-bowl-food"></i> Category: {{ recipe.category_name }}</p>
                             {% if recipe.vegan == "on" %}
                                 <i class="fa-solid fa-leaf"> Vegan</i>
                             {% endif %}
