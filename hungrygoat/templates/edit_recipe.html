@@ -31,16 +31,20 @@
                             title="Servings 1-20 using numeric values" class="validate" value="{{ recipe.servings }}"
                             required>
 
-                        <label for="servings"><i class="fa-solid fa-utensils"></i> Servings</i></label>
+                        <label for="servings"><i class="fa-solid fa-utensils"></i> Servings</label>
                     </div>
                 </div>
                 <div class="row">
                     <!--Category-->
                     <div class="input-field col s12">
                         <select name="category_id" id="category_id" class="validate" required>
-                            <option value="" disabled selected>Update Category</option>
+                            <option value="" disabled>Choose Category</option>
                             {% for category in categories %}
-                                <option value="{{ category.id }}">{{ category.category_name }}</option>
+                                {% if category.id == recipe.category_id | int %}
+                                    <option value="{{ category.id }}" selected>{{ category.category_name }}</option>
+                                {% else %}
+                                    <option value="{{ category.id }}">{{ category.category_name }}</option>
+                                {% endif %}
                             {% endfor %}
                         </select>
                         <label for="category_name"><i class="fa-solid fa-folder-open"></i> Category</label>
@@ -56,7 +60,7 @@
                     </div>
                     <!--Vegan Switch-->
                     <div class="switch input-field col s5">
-                        <label>
+                        <label for="vegan">
                             <i class="fa-solid fa-leaf"></i>
                             Vegan
                             {% if recipe.vegan == "on" %}
@@ -65,7 +69,7 @@
                                 <input type="checkbox" id="vegan" name="vegan">
                             {% endif %}
                             <span class="lever"></span>
-                        </label for="vegan">
+                        </label>
                     </div>
                 </div>
 
@@ -134,9 +138,7 @@
 
                 </div>
             </div>
-
         </form>
-
     </div>
 </div>
 
