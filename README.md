@@ -1,15 +1,14 @@
 # **Ηungry Goat - by Maria Markou-Inglis** 
 ## **Project overview**
-***
 ‘Hungry Goat’ is an online recipe cookbook where everyone can find vegan and veggie recipes. Users have the option to create an account where they can save their favourite recipes and also share their favourite recipes with everyone.
 
 The site is created to promote a healthy diet and promote healthy meat alternatives/
 
 I have used HTML, CSS, JavaScript and Python to build the site, ensuring that it is fully responsive to user interaction on their chosen device 
 
----
+
 ## **Deployed Site**
----
+
 The live website can be found a the following link; [Hungry Goat](https://hungry-goat.herokuapp.com/)
 <br>
 ![Printscreen of deployed app](hungrygoat/static/images/readme/amiresponsive.png)
@@ -162,10 +161,7 @@ As the website is created to share plant-based recipes, the colour scheme is gre
 ***
 
 ## **Testing**
-
-***
-
-Testing section for this project can be found [here]()
+Testing section for this project can be found [here](testing.md)
 
 ***
 ## **Deployment**
