@@ -19,8 +19,10 @@ def recipes():
     # loop over recipes
     for recipe in recipes:
         # get category from querying DB by recipe's category_id
-        category = Category.query.filter(Category.id == recipe['category_id']).first()
-        # add 'category_name' field to recipe with val from category above (if it exists)
+        category = Category.query.filter(
+            Category.id == recipe['category_id']).first()
+        # add 'category_name' field to recipe
+        # with val from category above (if it exists)
         if category:
             recipe['category_name'] = category.category_name
 
@@ -71,13 +73,14 @@ def add_recipe():
 
 
 @app.route("/edit_recipe<recipe_id>", methods=["GET", "POST"])
-def edit_recipe(recipe_id): 
-
+def edit_recipe(recipe_id):
+    """ Edits recipe on the DB """
     recipe = mongo.db.recipes.find_one({"_id": ObjectId(recipe_id)})
 
     if "user" in session:
         # Users can only edit their own recipes, admin can edit all recipes
-        if session.get("user") == "admin" or session.get("user") == recipe["created_by"]:
+        if (session.get("user") == "admin" or
+                session.get("user") == recipe["created_by"]):
             # Edit recipe and update db
             if request.method == "POST":
                 request.form.get("recipe_title")
@@ -93,7 +96,7 @@ def edit_recipe(recipe_id):
                     "created_by": session["user"]
                     }
                 mongo.db.recipes.update_one({"_id": ObjectId(recipe_id)},
-                                    {"$set": submit})
+                                            {"$set": submit})
                 flash("Recipe successfully updated!")
                 return redirect(url_for("recipes"))
         else:
@@ -115,7 +118,8 @@ def delete_recipe(recipe_id):
     recipe = mongo.db.recipes.find_one({"_id": ObjectId(recipe_id)})
     if "user" in session:
         # Users can only delete their own recipes, admin can delete all recipes
-        if session["user"] == "admin" or session["user"] == recipe["created_by"]:
+        if (session["user"] == "admin" or
+                session["user"] == recipe["created_by"]):
             mongo.db.recipes.delete_one({"_id": ObjectId(recipe_id)})
             flash("You deleted a recipe!")
             return redirect(url_for("recipes"))
@@ -143,6 +147,7 @@ def categories():
 
 @app.route("/add_category", methods=["GET", "POST"])
 def add_category():
+    """ Adds category on the DB """
 
     if "user" not in session or session["user"] != "admin":
         flash("You must be admin to manage categories!")
@@ -158,6 +163,7 @@ def add_category():
 
 @app.route("/edit_category/<int:category_id>", methods=["GET", "POST"])
 def edit_category(category_id):
+    """ Edits category on the DB """
     if "user" not in session or session["user"] != "admin":
         flash("You must be admin to manage categories!")
         return redirect(url_for("home"))
@@ -172,6 +178,7 @@ def edit_category(category_id):
 
 @app.route("/delete_category/<int:category_id>")
 def delete_category(category_id):
+    """ Deletes category on the DB """
     if session["user"] != "admin":
         flash("You must be admin to manage categories!")
         return redirect(url_for("home"))
@@ -185,6 +192,10 @@ def delete_category(category_id):
 
 @app.route("/register", methods=["GET", "POST"])
 def register():
+    """
+    Checks if username exists
+    If it does not exist adds data on PSQL db
+    """
     if request.method == "POST":
         # check if user already exists
         existing_user = Users.query.filter(
@@ -226,6 +237,8 @@ def register():
 
 @app.route("/login", methods=["GET", "POST"])
 def login():
+    """ Allows users to login into an existing account
+    and verifies username and password """
     if "user" in session:
         flash("You're already logged in!")
         return redirect(url_for('profile'))
@@ -281,8 +294,3 @@ def logout():
     flash("You have been logged out. See you soon!")
     session.pop("user")
     return redirect(url_for("login"))
-
-
-@app.route("/contact", methods=["GET", "POST"])
-def contact():
-    return render_template("contact.html")

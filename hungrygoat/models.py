@@ -10,6 +10,8 @@ class Category(db.Model):
     def __repr__(self):
         # __repr__ to represent itself in the form of a string
         return self.category_name
+
+
 class Users(db.Model):
     """ schema for the Users model """
     # schema for the User model
