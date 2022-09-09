@@ -136,14 +136,14 @@ As the website is created to share plant-based recipes, the colour scheme is gre
 ## **Technologies**
 ***
 ### **Languages and Libraries**
-- [HTML5](https://en.wikipedia.org/wiki/HTML5)
-- [CSS3]()
-- [JavaScript]()
-- [Python]()
-- [Flask]()
-- [Font Awesome]()
-- [Google Fonts]()
-- [Materialize]()
+- [HTML5](https://en.wikipedia.org/wiki/HTML5) Was used for structuring and presenting content of the website
+- [CSS3](https://en.wikipedia.org/wiki/CSS) Was used for the styling of the content
+- [JavaScript](https://www.javascript.com/) Was used to make the front end interacting
+- [Python](https://www.python.org/) Was used for programming the application
+- [Flask](https://flask.palletsprojects.com/en/2.2.x/) Was used to handle the templating throughout the site’s HTML pages
+- [Font Awesome](https://fontawesome.com/) Was used to source the icons used on the site
+- [Google Fonts](https://fonts.google.com/) Was used to source the fonts used on the site
+- [Materialize](https://materializecss.com/) Was used for responsiveness and for the design of the application
   
 ### **IDE and Version Control**
 - [Git](https://git-scm.com/) was used for version control
@@ -151,13 +151,18 @@ As the website is created to share plant-based recipes, the colour scheme is gre
 - [GitPod](https://www.gitpod.io/) was used for editing code.
 - [Code Institute Template](https://github.com/Code-Institute-Org/gitpod-full-template) provided GitPod extensions.
 ### **Design and Development**
+- [Heroku](https://id.heroku.com/login) Used for deployment of the application alongisde Github
 - [Balsamiq](https://balsamiq.com/) was used to create wireframes
 - [Lucid](https://lucid.app/) was used to create database schema diagram
 - [Adobe Photoshop](https://www.adobe.com/uk/) was used to edit the hero image
 - [Favicon](https://favicon.io/) was used to create a favicon for the site.
-
 ### **Validating and Testing**
-
+- [Chrome](https://www.google.com/chrome/) Used to debug and test the source code and to test site responsiveness
+- [W3C Markup](https://validator.w3.org/) Used for validating the html5 code
+- [CSS Validator](https://jigsaw.w3.org/css-validator/) Used for validating the CSS code
+- [JSHint](https://jshint.com/) Used for validating javascript code 
+- [Am I Responsive](https://ui.dev/amiresponsive) Used to generate the live site images, and also used to test responsiveness
+- [PeP8 online](http://pep8online.com/) Was used to check and prove pep8 compliance for models and routes.py files
 ***
 
 ## **Testing**
@@ -165,10 +170,22 @@ Testing section for this project can be found [here](testing.md)
 
 ***
 ## **Deployment**
-***
+# **Deployment to Heroku**
+ **Heroku was used to deploy this project. The steps used for deployment to Heroku are as follows:**
+
+  1. Sign up and log into heroku
+  2. On the top right hand corner of the heroku website click new, then create new app
+  3. Name app and select region click create app
+  4. Install postgres under the resources tab
+  5. Insert relevant config vars into heroku, such as IP,PORT SECRET_KEY, DATABAS_URL
+  6. You can click connect to github but this project used the CLI method.
+  7. Log into heroku via CLI
+  8. Create a git remote for heroku
+  9. Push all changes to the staging area
+  10. Push to heroku for your app to run and function.
+   
 
 ## **Credits**
-
    # **Code**
    - Code for submiting ingredients and method steps when adding a recipe from [Wanderlust Recipes](https://github.com/RussOakham/wanderlust-recipes)
    
