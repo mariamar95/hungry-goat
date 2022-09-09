@@ -91,3 +91,21 @@ hr {
 .card-content, .modal-content i{
     color: #344e41;
 }
+
+.card .card-image img {
+    height: 250px;
+    object-fit: cover;
+}
+
+.card .card-content {
+    height: 200px;
+    padding-top: 20px;
+}
+
+.card .card-action {
+    padding: 0, 5px;
+}
+
+.card {
+    height: 550px;
+}
