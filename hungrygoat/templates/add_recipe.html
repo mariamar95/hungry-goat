@@ -21,7 +21,6 @@
                         <label for="image_url"><i class="fa-solid fa-image"></i> Upload image url (optional)</label>
                     </div>
                     <div class="input-field col s4">
-
                         <input id="servings" name="servings" type="number" min="1" max="20"
                             title="Servings 1-20 using numeric values" class="validate" required>
 
@@ -30,13 +29,13 @@
                 </div>
                 <div class="row">
                     <div class="input-field col s12">
-                        <label for="category_id"><i class="fa-solid fa-folder-open"></i> Category</label>
                         <select name="category_id" id="category_id" class="validate" required>
                             <option value="" disabled selected>Choose Category</option>
                             {% for category in categories %}
                                 <option value="{{ category.id }}">{{ category.category_name }}</option>
                             {% endfor %}
                         </select>
+                        <label for="category_id"><i class="fa-solid fa-folder-open"></i>Category</label>
                     </div>
                 </div>
                 <div class="row">
