@@ -37,6 +37,7 @@
                 <div class="row">
                     <!--Category-->
                     <div class="input-field col s12">
+                        <label for="category_name"><i class="fa-solid fa-folder-open"></i> Category</label>
                         <select name="category_id" id="category_id" class="validate" required>
                             <option value="" disabled>Choose Category</option>
                             {% for category in categories %}
@@ -47,7 +48,6 @@
                                 {% endif %}
                             {% endfor %}
                         </select>
-                        <label for="category_name"><i class="fa-solid fa-folder-open"></i> Category</label>
                     </div>
                 </div>
                 <div class="row">
