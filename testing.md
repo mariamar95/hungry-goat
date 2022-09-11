@@ -105,6 +105,12 @@ Compatibility issues with IE:
 - Main font does not work
 - Does not render some of the images
 
+## **Performance**
+[Google Lighthouse](https://chrome.google.com/webstore/detail/lighthouse/blipmdconlkpinefehnmjammfjpmpbjk?hl=en) was used to test performance site. 
+Overall the site performs well on desktop. For mobile devices the site performs well but has scored lower on performance, primarily due to large media content.
+- Desktop ![](hungrygoat/static/images/readme/lighthouse.png)
+- Mobile ![](hungrygoat/static/images/readme/lighthouse2.png)
+
 ## **Manual Testing**
 Throughout development, manual testing was carried out in addition to further testing at the end of the project. Testing was carried out on Google Chrome.
 
@@ -127,7 +133,7 @@ Throughout development, manual testing was carried out in addition to further te
 
 - Add Recipe 
   - The form has labels and prompts where required, guiding the user on how to fill the form out.
-  - Validation was not added on 'Categories', 'Ingredients' and 'Method Steps'. All other inputs are validated 
+  - Validation was not added on 'Ingredients' and 'Method Steps'. All other inputs are validated 
   
 - Edit Recipe
   - The edit recipe form is displayed retrieving all recipe details from the database
@@ -143,4 +149,21 @@ Throughout development, manual testing was carried out in addition to further te
 - Login Form
   - Existing users can log in
   - If unsuccessful a flash message will appear prompting users that the password and or username is incorrect
+
+## **Bugs**
+### **Found and Fixed**
+**Category Display**
+- I was having trouble displaying the recipe category for each recipe. The bug was caused as the categories were saved in PostgreSQL and the recipe on Mongo. The 'Add recipe' form retrieves the 'category_name' and displays from PSQL however it saves the 'category_id' on MongoDB. The issue was solved by moving the loop from the html file to the python function. See code bellow:
+- ![](hungrygoat/static/images/readme/routes-bug.png)
+- ![](hungrygoat/static/images/readme/recipe-html-bug.png)
+  
+**Python validation errors:**
+- Initially it came back with errors relating to trailing whitespace, lines too long and incorrect indentation.
+- This was resolved and the validation came back with no errors.
+![](hungrygoat/static/images/readme/validation/pep8-before.png)
+
+### **Unfixed**
+**Add Recipe Validation**
+- Users can submit a recipe leaving the 'ingredients' and 'methods' empty. This is something that I did not have the time to fix before submitting the project.
+
 
