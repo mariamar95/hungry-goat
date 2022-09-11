@@ -1,6 +1,6 @@
 # **Ηungry Goat - by Maria Markou-Inglis** 
 ## **Project overview**
-‘Hungry Goat’ is an online recipe cookbook where everyone can find vegan and veggie recipes. Users have the option to create an account where they can save their favourite recipes and also share their favourite recipes with everyone.
+‘Hungry Goat’ is an online recipe cookbook where everyone can find vegan and veggie recipes. Users have the option to create an account where they can save their favorite recipes and also share their favorite recipes with everyone.
 
 The site is created to promote a healthy diet and promote healthy meat alternatives/
 
@@ -11,18 +11,16 @@ I have used HTML, CSS, JavaScript and Python to build the site, ensuring that it
 
 The live website can be found a the following link; [Hungry Goat](https://hungry-goat.herokuapp.com/)
 <br>
-![Printscreen of deployed app](hungrygoat/static/images/readme/amiresponsive.png)
+![Print screen of deployed app](hungrygoat/static/images/readme/amiresponsive.png)
 ***
 
 ## **Project Goals**
----
 - Create a web application where users can create, store and easily access recipes
 - Build a website that is responsive on all devices
 - Display information in a user-friendly way, contributing to an overall good user experience
 
 ***
 ## **UX Design**
----
 ## **Strategy Plan**
 <br>
 
@@ -42,7 +40,7 @@ The live website can be found a the following link; [Hungry Goat](https://hungry
       - Access a variety of veggie & vegan recipes for different meals of the day
       - Be able to filter the recipes using ingredients and recipe title
       - Have the option to register an account
-    - **Returing User**
+    - **Returning User**
       - Be able to login to their account
       - Share their own recipes
       - Find the recipes they have shared on their profile page
@@ -59,11 +57,11 @@ The live website can be found a the following link; [Hungry Goat](https://hungry
 ### **Existing Features** 
 
 1. **Design**
-   - Simple layout and design that is consisntent throught the website
+   - Simple layout and design that is consistent throughout the website
 2. **Navigation**
    - Users can easily navigate, using the navigation bar located on the top of the page. 
    - Different links appear depending on the user that is logged in
-   - Collapsable navigation bar appears on the left side on smaller screens 
+   - Collapsible navigation bar appears on the left side on smaller screens 
 3. **Recipes**
    - Users can create, read, update and delete (CRUD) recipes
    - Users can access the recipes without having to create or login to their account
@@ -84,7 +82,7 @@ The live website can be found a the following link; [Hungry Goat](https://hungry
       - **Check username:** Functions like edit or delete recipe check that your username matched to the user that created the recipe. As you cannot edit or delete recipes created by other users a flash message will appear that says you are not authorised
       - **Check if username == admin** Functions check if the user is admin and allow to create, edit or delete all recipes and categories
 ### **Future Features** 
-1. **Favourite Recipes:** Users can save their favourite recipes. Recipes will be displayed on their profile
+1. **Favorite Recipes:** Users can save their favorite recipes. Recipes will be displayed on their profile
 2. **Rate a Recipe:** Users can rate recipes
 3. **Comment on Recipes:** Users can leave comments on recipes
 4. **Account Setting:** Users can change their password and delete their account
@@ -94,9 +92,9 @@ The live website can be found a the following link; [Hungry Goat](https://hungry
 ***
 The structure of the site has been developed to enable users to access and use the site with ease.
 
-- **Home Page:** The home page is accesible to all users, whether logged-in or not
+- **Home Page:** The home page is accessible to all users, whether logged-in or not
 - **Navbar:** The navigation bar is accessible to all users. The navbar changes to a sidenav on smaller screens for responsiveness. The options available in the navbar change depending on whether a user is logged in or not.
-   - For logged in users: ![Navbar for loggedin user](hungrygoat/static/images/readme/nav-user.png)
+   - For logged in users: ![Navbar for logged-in user](hungrygoat/static/images/readme/nav-user.png)
    - For admin user: ![Navbar for admin user](hungrygoat/static/images/readme/nav-admin.png)
    - For not logged in users: ![Navbar for not logged in users](hungrygoat/static/images/readme/nav-no-user.png)
 - **Recipes:** The recipe page is accessible to all users, whether logged in or not.
@@ -104,7 +102,7 @@ The structure of the site has been developed to enable users to access and use t
       - Card display when admin is logged in ![](hungrygoat/static/images/readme/card-admin.png)
       - Card display when user is not logged in ![](hungrygoat/static/images/readme/card-user.png)
       - Card display when user maria is logged in ![](hungrygoat/static/images/readme/card-maria-user.png)
-- **Profile:** Profile page is only accesible if the user is logged in. On the Profile page users can find a "Add Recipe" button and a "Logout" button ![](hungrygoat/static/images/readme/profile-btns.png)
+- **Profile:** Profile page is only accessible if the user is logged in. On the Profile page users can find a "Add Recipe" button and a "Logout" button ![](hungrygoat/static/images/readme/profile-btns.png)
 All recipes shared by the logged in user are displayed on their profile page. The user can edit and delete their own recipes from their profile
 - 
 ***
@@ -124,13 +122,16 @@ All recipes shared by the logged in user are displayed on their profile page. Th
 ## **Surface Plane**
 ***
 ### **Colour Scheme**
+[Colors](https://coolors.co/) was used to create the palette.
+I chose to use a green palette for the website as the green colour is commonly associated with vegetarianism 
 ![](hungrygoat/static/images/readme/colour-palette.png)
-[Coolors](https://coolors.co/) was used to create the palette.
 
-As the website is created to share plant-based recipes, the colour scheme is green.
-### **Images**
-### **Design**
 ### **Typography**
+[Google Fonts](https://fonts.google.com/) was used to choose fonts for the site. Caveat Brush chosen as the brand logo font and all titles on the site. Arimo was chosen for the rest of the site, as it is clear and easy to read.
+
+### **Images**
+
+The [hero image](https://www.pexels.com/photo/selective-focus-photography-of-goat-1011630/) was sourced from [pexels](https://www.pexels.com/). When looking for the hero image on pexels I was looking for a goat to be the face of the site. The photograph was selected as the frame looks well on all screens. I decided to use a black and white version of the photo as the greens on it did not match the green shades selected on the colour palette.
 
 ***
 ## **Technologies**
@@ -151,7 +152,7 @@ As the website is created to share plant-based recipes, the colour scheme is gre
 - [GitPod](https://www.gitpod.io/) was used for editing code.
 - [Code Institute Template](https://github.com/Code-Institute-Org/gitpod-full-template) provided GitPod extensions.
 ### **Design and Development**
-- [Heroku](https://id.heroku.com/login) Used for deployment of the application alongisde Github
+- [Heroku](https://id.heroku.com/login) Used for deployment of the application alongside Github
 - [Balsamiq](https://balsamiq.com/) was used to create wireframes
 - [Lucid](https://lucid.app/) was used to create database schema diagram
 - [Adobe Photoshop](https://www.adobe.com/uk/) was used to edit the hero image
@@ -187,7 +188,9 @@ Testing section for this project can be found [here](testing.md)
 
 ## **Credits**
    # **Code**
-   - Code for submiting ingredients and method steps when adding a recipe from [Wanderlust Recipes](https://github.com/RussOakham/wanderlust-recipes)
+   - [Materialize](https://materializecss.com/) used for styling and responsiveness throughout including recipe cards and forms
+   - Code for submitting ingredients and method steps when adding a recipe from [Wanderlust Recipes](https://github.com/RussOakham/wanderlust-recipes)
+   - [Combining Databases](https://github.com/Code-Institute-Solutions/CombinedTaskManager2022) for connecting both databases
    
    # **Images**
    - Hero Image [Nandhu Kumar](https://www.pexels.com/@nandhukumar/) from [pexels.com](https://www.pexels.com/photo/selective-focus-photography-of-goat-1011630/)
