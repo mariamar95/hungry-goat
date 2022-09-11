@@ -69,3 +69,78 @@
         - When the admin user accesses the recipe page, all recipe cards have an edit button
       - Be able to to delete existing recipes created by any user.
          - When the admin user accesses the recipe page, all recipe cards have an delete button![](hungrygoat/static/images/readme/user_stories/admin-recipes.png)
+  
+
+## **Responsiveness**
+The site was tested using [Mobile Compatibility Tester - Google Mobile Friendly Test](https://search.google.com/test/mobile-friendly) and [Google Chrome Developer Tools](https://developer.chrome.com/docs/devtools/). The site was also tested using the the following devices 
+
+- Dell XPS 15 9520 Laptop
+- MacBook Pro 2015
+- Xiaomi Redmi Note 10 Pro
+
+
+It works well on all screens. The following issues were found:
+1. Search bar on small screens
+  - Search word is not displayed on the green search button (button still works as intended).
+  - Search Recipes is displayed on 2 lines 
+![](hungrygoat/static/images/readme/search-bar-issue.png) 
+2. Recipe Card display 
+   - When setting the width between 1095 and 993 the edit and delete recipe buttons cover the "created by: user" on the recipe cards
+  ![](hungrygoat/static/images/readme/display-issue.png)
+
+## **Browser Compatibility**
+The following browsers were tested:
+| Browser        | Outcome       | 
+| -------------  | ------------- | 
+| Google Chrome  | Good          | 
+| Mozilla-Firefox| Good          | 
+| Safari         | Good          | 
+| Edge           | Good          | 
+| IE             | Poor          | 
+
+All browsers, except IE, returned good results when displaying the site.
+
+Compatibility issues with IE:
+- SideNav does not work
+- Main Font does not work
+- Does not render some of the images
+
+## **Manual Testing**
+Throughout development manual testing was carried out, in addition to further testing at the end of the project. Testing was carried out on Google Chrome.
+
+- Navigation links take user to the relevant pages
+  - All links have been tested and work as intended 
+  
+- Brand logo takes user back to the home page
+
+- Recipes Page
+  - Displays all recipes. 
+  - If a user is logged in they can see a "Add Recipe" button 
+  - When a users clicks on the image of the recipe a modal opens, which displays the full recipe
+  - Users can close the modal either by clicking on the close button or by clicking outside the modal
+  - Users can see an edit and delete button only for their own recipes
+    - Both buttons have been tested and work as intended 
+  - Admin User can see an edit and delete button on all recipe cards
+  - Search bar allows users to input word search recipe titles and ingredients 
+    - Reset button is required to be clicked in order to reset search and display all recipes
+    - When a users clicks the search button without typing anything, a message pops up asking the user to fill in the field
+
+- Add Recipe 
+  - The form has labels and prompts were required, guiding the user on how to fill the form out.
+  - Validation was not added on "Categories", "Ingredients" and "Method Steps". All other inputs are validated 
+  
+- Edit Recipe
+  - The edit recipe form is displayed retrieving all recipe details from the database
+
+- Profile Page
+  - Displays all recipes shared by the logged-in user
+  - Add recipe button tested and it takes you to the add recipe form
+  - Logout button tested and works as intended  
+  
+- Register Form
+  - Form is validated, highlights to user what is required if not filled in correctly
+
+- Login Form
+  - Existing users can log in
+  - If unsuccessful a flash message will appear prompting users that password and or username is incorrect
+

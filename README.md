@@ -19,7 +19,6 @@ The live website can be found a the following link; [Hungry Goat](https://hungry
 - Build a website that is responsive on all devices
 - Display information in a user-friendly way, contributing to an overall good user experience
 
-***
 ## **UX Design**
 ## **Strategy Plan**
 <br>
