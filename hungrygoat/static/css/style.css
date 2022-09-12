@@ -92,16 +92,16 @@ hr {
     color: #344e41;
 }
 
-.card .card-image img {
+.recipe-card .card-image img {
     height: 250px;
     object-fit: cover;
 }
 
-.card .card-content {
+.recipe-card .card-content {
     height: 200px;
     padding-top: 20px;
 }
 
-.card {
+.recipe-card {
     height: 550px;
 }

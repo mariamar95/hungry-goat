@@ -18,7 +18,7 @@
 <div class="row">
     {% for recipe in recipe_list%}
             <div class="col s12 m4">
-                <div class="card">
+                <div class="card recipe-card">
                     <div class="card-image">
                         {% if recipe.image_url %}
                         <img src="{{ recipe.image_url }}" alt="Image of recipe">
